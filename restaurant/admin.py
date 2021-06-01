@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import RestaurantMenu, RestaurantProfile
+from .models import RestaurantMenu, RestaurantProfile, RestaurantInitialInfo
 
 admin.site.site_header = 'Moozy Admin'
 @admin.register(RestaurantMenu)
@@ -16,3 +16,8 @@ class RestaurantProfileAdmin(admin.ModelAdmin):
                     'restaurant_type', 'special_item', 'registration_date']
 
 
+@admin.register(RestaurantInitialInfo)
+class RestaurantIniInfo(admin.ModelAdmin):
+    list_display = ['resuser', 'resname', 'resowner', 'email', 'address', 'area', 'city']
+    list_filter = ('area',)
+    search_fields = ('resname',)
