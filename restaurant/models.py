@@ -47,3 +47,24 @@ class RestaurantMenu(models.Model):
     resmenu = models.ForeignKey(Menu, on_delete=models.CASCADE, verbose_name='Select Item', related_name='men')
     price = models.FloatField()
     availability = models.BooleanField(default=True)
+    
+
+class RestaurantInitialInfo(models.Model):
+    """Initial Information about Restaurant"""
+    resuser = models.OneToOneField(RestaurantUser, on_delete=models.CASCADE,blank=False, verbose_name='Restaurant Number')
+    city_choices = (
+        ('Jaipur', 'Jaipur'),
+        ('Delhi', 'Delhi'),
+        ('Hyderabad', 'Hyderabad'),
+        ('Pune', 'Pune'),
+        ('Bengaluru', 'Bengaluru'),
+        ('Chennai', 'Chennai'),
+        ('Mumbai', 'Mumbai'),
+    )
+    resname = models.CharField(max_length=255, blank=False, verbose_name='Restaurant Name')
+    resowner = models.CharField(max_length=100, blank=False, verbose_name='Owner Name')
+    email = models.EmailField(blank=True, null=True, verbose_name='Email')
+    address = models.TextField(verbose_name='Address')
+    area = models.CharField(max_length=100, blank=False, verbose_name="Area")
+    city = models.CharField(max_length=50, blank=False, verbose_name='City', choices=city_choices)
+
