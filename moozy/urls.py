@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from user.views import ValidatePhoneSendOTP, ValidateOTP, Register
-from restaurant.views import RestaurantMenuView, RestaurantProfileView, RestaurantProfileUpdate
+from restaurant.views import RestaurantMenuView, RestaurantProfileView, RestaurantProfileUpdate, , RestaurantInfoView
 from moozy_admin.views import MenuView, CategoryView, AttributeView
 
 urlpatterns = [
@@ -30,5 +30,6 @@ urlpatterns = [
     path('category/', CategoryView.as_view(), name='AdminCategory'),
     path('menu/', MenuView.as_view(), name='AdminMenu'),
     path('attribute/', AttributeView.as_view(), name='AdminAttribute'),
+    path('resinfo/<int:pk>/', RestaurantInfoView.as_view(), name='Restaurant Info'),
 
 ]
