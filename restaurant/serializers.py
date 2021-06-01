@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import RestaurantProfile, RestaurantMenu
+from .models import RestaurantProfile, RestaurantMenu, RestaurantInitialInfo
 
 
 class RestaurantMenuSerializer(serializers.ModelSerializer):
@@ -18,3 +18,10 @@ class RestaurantProfileSerializer(serializers.ModelSerializer):
                     'mobile_no', 'email', 'bank_ac_no', 'bank_name', 'ifsc_code', 'km_range',
                     'active_since', 'daily_working_time', 'daily_off', 'evening_timeo', 'evening_timec', 'restaurant_food_type',
                     'restaurant_type', 'special_item', 'registration_date']
+
+
+class RestaurantInfoSerializer(serializers.ModelSerializer):
+    """Initial Info Serializer"""
+    class Meta:
+        model = RestaurantInitialInfo
+        fields = ['id', 'resuser', 'resname', 'resowner', 'email', 'address', 'area', 'city']

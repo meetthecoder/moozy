@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import RestaurantMenu, RestaurantProfile
-from .serializers import RestaurantMenuSerializer, RestaurantProfileSerializer
+from .models import RestaurantMenu, RestaurantProfile, RestaurantInitialInfo
+from .serializers import RestaurantMenuSerializer, RestaurantProfileSerializer, RestaurantInfoSerializer
 from rest_framework.generics import ListAPIView, ListCreateAPIView, RetrieveUpdateAPIView
 
 
@@ -21,3 +21,8 @@ class RestaurantProfileUpdate(RetrieveUpdateAPIView):
     queryset = RestaurantProfile.objects.all()
     serializer_class = RestaurantProfileSerializer
 
+
+class RestaurantInfoView(RetrieveUpdateAPIView):
+    """Restaurant Info View"""
+    queryset = RestaurantInitialInfo.objects.all()
+    serializer_class = RestaurantInfoSerializer
